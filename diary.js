@@ -188,7 +188,12 @@ function renderAllEntries() {
   //    반환된 요소를 diaryList에 appendChild하세요
   //
   // 힌트: forEach로 순회, appendChild로 추가
+  const stats = getDiaryStats();
+  if (!stats) return;
   diaryList.innerHTML = "";
+  const listTitle = diaryList.previousElementSibling;
+  listTitle.textContent = `일기 목록: ${stats.total}개`;
+
   diary.length === 0
     ? (emptyMessage.style.display = "block")
     : (emptyMessage.style.display = "none");
